@@ -10,6 +10,10 @@ const User = require('./models/users');
 const multer = require('multer');
 const City =  require('./models/city');
 const Citizens = require('./models/citizens');
+const ListProducts = require('./models/product_for_sale');
+const Customer = require('./models/customers_for_products');
+
+const shopRoutes = require('./routes/shop');
 
 mongoose.connect('mongodb://localhost:27017/learn-mongo',{ useNewUrlParser: true,useUnifiedTopology: true })
     .then(() => {
@@ -87,6 +91,8 @@ const storage = multer.diskStorage({
         cb(null,name+'-'+Date.now()+'-'+ext);
     }
 })
+
+app.use('/learn-mongo/shop',shopRoutes);
 
 app.post('/learn-mongo/signup',authController.signup);
 app.post('/learn-mongo/login',authController.login);
@@ -188,6 +194,7 @@ app.post('/learn-mongo/add-citizen',(req,res,next) => {
 })
 
 app.use((error,req,res,next)=>{
+    console.log(error)
     res.status(500).json({
         message:"Some Error Occured",
         error:error
