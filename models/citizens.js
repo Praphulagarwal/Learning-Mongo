@@ -5,7 +5,7 @@ const citizenSchema = mongoose.Schema({
     cityId:{
         type:mongoose.Schema.Types.ObjectId,
         ref:'City'
-    }
+    },
 })
 
 module.exports = mongoose.model('Citizen',citizenSchema);
