@@ -108,19 +108,6 @@ router.get('/cart-products-get',async (req,res,next) => {
     }
 })
 
-router.get('/cart-products-get',async (req,res,next) => {
-    const customer = await Customer.findOne({_id:req.body.id}).populate('cart_product').exec();
-    if(customer){
-        res.status(200).json({
-            message:"Your Cart Products",
-            data:customer
-        })
-    }else{
-        return res.status(404).json({
-            error:"customer not found"
-        })
-    }
-})
 
 
 
