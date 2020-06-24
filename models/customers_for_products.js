@@ -4,9 +4,10 @@ const customerForProductsSchema = mongoose.Schema({
     username:{type:String,required:true},
     age:{type:Number,required:true},
     purchased_product:[{
-        title:{type:Number},
-        p_id:{type:Number},
-        p_type:{type:String}
+        title:{type:String},
+        price:{type:Number},
+        p_type:{type:String},
+        p_brand:{type:String}
     }],
     cart_product:[
         { 
